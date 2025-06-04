@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 const projectsData = [
@@ -68,11 +67,11 @@ const Projects = () => {
     : projectsData.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="section-padding bg-gradient-to-b from-construction-dark to-construction-muted">
+    <section id="projects" className="section-padding bg-site-panel">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="heading-lg mb-4">Our <span className="text-construction-accent">Projects</span></h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <h2 className="heading-lg mb-4">Our <span className="text-site-accent">Projects</span></h2>
+          <p className="text-site-text/80 max-w-2xl mx-auto">
             Explore our diverse portfolio of projects that showcase our expertise and innovation
           </p>
         </div>
@@ -83,8 +82,8 @@ const Projects = () => {
               key={category.id}
               className={`px-6 py-2 rounded-full border transition-all ${
                 activeCategory === category.id
-                  ? 'border-construction-accent text-construction-accent bg-construction-accent bg-opacity-10'
-                  : 'border-construction-border text-gray-400 hover:border-gray-400 hover:text-gray-300'
+                  ? 'border-site-accent text-site-accent bg-site-accent/10'
+                  : 'border-site-line text-site-text/60 hover:border-site-accent hover:text-site-accent'
               }`}
               onClick={() => setActiveCategory(category.id)}
             >
@@ -97,7 +96,7 @@ const Projects = () => {
           {filteredProjects.map((project) => (
             <div 
               key={project.id}
-              className="project-card cursor-grow"
+              className="project-card cursor-grow bg-site-base rounded-lg shadow-elevated overflow-hidden"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
@@ -109,15 +108,15 @@ const Projects = () => {
                     hoveredProject === project.id ? 'scale-110' : 'scale-100'
                   }`} 
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-500 ${
+                <div className={`absolute inset-0 bg-gradient-to-t from-site-text/90 via-site-text/50 to-transparent transition-opacity duration-500 ${
                   hoveredProject === project.id ? 'opacity-100' : 'opacity-80'
                 }`}></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="inline-block px-3 py-1 mb-2 bg-construction-accent bg-opacity-90 text-construction-dark text-xs font-medium uppercase rounded-full">
+                  <div className="inline-block px-3 py-1 mb-2 bg-site-accent/90 text-site-base text-xs font-medium uppercase rounded-full">
                     {project.category}
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-1">{project.title}</h3>
-                  <div className="flex items-center justify-between text-sm text-gray-300">
+                  <h3 className="text-xl font-semibold text-site-base mb-1">{project.title}</h3>
+                  <div className="flex items-center justify-between text-sm text-site-base/80">
                     <span>{project.location}</span>
                     <span>{project.year}</span>
                   </div>

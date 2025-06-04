@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import CustomCursor from '../components/CustomCursor';
 import Navbar from '../components/Navbar';
@@ -100,7 +99,7 @@ const ProjectsPage = () => {
     : projectsData.filter(project => project.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-construction-dark">
+    <div className="min-h-screen bg-site-base">
       <CustomCursor />
       <Navbar />
       
@@ -108,8 +107,8 @@ const ProjectsPage = () => {
         <div className="noise-bg"></div>
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="heading-xl text-white mb-8">Our <span className="text-construction-accent">Projects</span></h1>
-            <p className="text-gray-300 text-lg">
+            <h1 className="heading-xl text-site-text mb-8">Our <span className="text-site-accent">Projects</span></h1>
+            <p className="text-site-text/80 text-lg">
               Explore our diverse portfolio of completed projects across various sectors
             </p>
           </div>
@@ -120,8 +119,8 @@ const ProjectsPage = () => {
                 key={category.id}
                 className={`px-6 py-2 rounded-full border transition-all ${
                   activeCategory === category.id
-                    ? 'border-construction-accent text-construction-accent bg-construction-accent bg-opacity-10'
-                    : 'border-construction-border text-gray-400 hover:border-gray-400 hover:text-gray-300'
+                    ? 'border-site-accent text-site-accent bg-site-accent/10'
+                    : 'border-site-line text-site-text/60 hover:border-site-accent hover:text-site-accent'
                 }`}
                 onClick={() => setActiveCategory(category.id)}
               >
@@ -134,7 +133,7 @@ const ProjectsPage = () => {
             {filteredProjects.map((project) => (
               <div 
                 key={project.id}
-                className="project-card cursor-grow"
+                className="project-card cursor-grow bg-site-base rounded-lg shadow-elevated overflow-hidden"
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
@@ -143,22 +142,22 @@ const ProjectsPage = () => {
                     alt={project.title} 
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-80"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-site-text/90 via-site-text/50 to-transparent opacity-80"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="inline-block px-3 py-1 mb-2 bg-construction-accent bg-opacity-90 text-construction-dark text-xs font-medium uppercase rounded-full">
+                    <div className="inline-block px-3 py-1 mb-2 bg-site-accent/90 text-site-base text-xs font-medium uppercase rounded-full">
                       {project.category}
                     </div>
-                    <h3 className="text-xl font-semibold text-white mb-1">{project.title}</h3>
-                    <div className="flex items-center justify-between text-sm text-gray-300">
+                    <h3 className="text-xl font-semibold text-site-base mb-1">{project.title}</h3>
+                    <div className="flex items-center justify-between text-sm text-site-base/80">
                       <span>{project.location}</span>
                       <span>{project.year}</span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="p-6 bg-construction-muted border-t border-construction-border">
-                  <p className="text-gray-400 text-sm line-clamp-3 mb-4">{project.description}</p>
-                  <button className="inline-flex items-center text-construction-accent text-sm hover:underline">
+                <div className="p-6 bg-site-panel border-t border-site-line">
+                  <p className="text-site-text/80 text-sm line-clamp-3 mb-4">{project.description}</p>
+                  <button className="inline-flex items-center text-site-accent text-sm hover:underline">
                     View details <ArrowRight className="ml-1 h-3 w-3" />
                   </button>
                 </div>
