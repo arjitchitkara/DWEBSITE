@@ -11,7 +11,7 @@ const links = [
   { name: 'Services', path: '/services' },
   { name: 'Projects', path: '/projects' },
   { name: 'Team',     path: '/team' },
-  { name: 'Contact',  path: '/contact' },
+  { name: 'Contact',  path: '#contact' },
 ];
 
 export default function Navbar() {
@@ -27,6 +27,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      setOpen(false);
+    }
+  };
+
   return (
     <header
       className={clsx(
@@ -39,23 +48,34 @@ export default function Navbar() {
     >
       <nav className="container-custom flex items-center justify-between">
         {/* ─────────────────── logo ─────────────────── */}
-        <Link to="/" className="flex items-center">
-          <Logo className="h-16 md:h-20 mix-blend-difference" />
-        </Link>
+        <Logo to="/" className="h-16 md:h-20 mix-blend-difference" />
 
         {/* ─────────────── desktop links ─────────────── */}
         <ul className="hidden md:flex space-x-10 /* theme-update */ text-site-text">
           {links.map(l => (
             <li key={l.name}>
-              <Link
-                to={l.path}
-                className={clsx(
-                  'hover:text-site-accent transition-colors',
-                  pathname === l.path && 'text-site-accent font-semibold'
-                )}
-              >
-                {l.name}
-              </Link>
+              {l.name === 'Contact' ? (
+                <a
+                  href={l.path}
+                  onClick={handleContactClick}
+                  className={clsx(
+                    'hover:text-site-accent transition-colors cursor-pointer',
+                    pathname === l.path && 'text-site-accent font-semibold'
+                  )}
+                >
+                  {l.name}
+                </a>
+              ) : (
+                <Link
+                  to={l.path}
+                  className={clsx(
+                    'hover:text-site-accent transition-colors',
+                    pathname === l.path && 'text-site-accent font-semibold'
+                  )}
+                >
+                  {l.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -78,14 +98,25 @@ export default function Navbar() {
           <ul className="flex flex-col items-center py-6 space-y-4">
             {links.map(l => (
               <li key={l.name}>
-                <Link
-                  to={l.path}
-                  /* theme-update */
-                  className="text-site-text text-lg hover:text-site-accent"
-                  onClick={() => setOpen(false)}
-                >
-                  {l.name}
-                </Link>
+                {l.name === 'Contact' ? (
+                  <a
+                    href={l.path}
+                    onClick={handleContactClick}
+                    /* theme-update */
+                    className="text-site-text text-lg hover:text-site-accent cursor-pointer"
+                  >
+                    {l.name}
+                  </a>
+                ) : (
+                  <Link
+                    to={l.path}
+                    /* theme-update */
+                    className="text-site-text text-lg hover:text-site-accent"
+                    onClick={() => setOpen(false)}
+                  >
+                    {l.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

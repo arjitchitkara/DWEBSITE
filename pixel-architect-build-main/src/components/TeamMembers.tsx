@@ -1,9 +1,7 @@
 /*  src/components/TeamMembers.tsx  */
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
-import { s } from 'node_modules/framer-motion/dist/types.d-CtuPurYT';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1)  TYPE DEFINITIONS
@@ -12,10 +10,8 @@ type Step =
   | { id: number; year: string; title: string; body: string; img: string }
   | { id: number; year: string; title: string; body: string; images: string[] };
 
-type TeamMember = { id: number; name: string; role: string; image: string; description: string };
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 2)  DATA (HERO, TEAM, JOURNEY)
+// 2)  DATA (HERO, JOURNEY)
 // ─────────────────────────────────────────────────────────────────────────────
 const owner = {
   img: '/images/atul-chitkara.png',
@@ -30,36 +26,6 @@ committed to contextual sensitivity, structural rigour and lasting sustainabilit
     { label: 'Satisfaction', value: '5★'  }
   ]
 };
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: 'Sarah Johnson',
-    role: 'Lead Architect',
-    image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300',
-    description:
-      'Advocates passive-design strategies & low-carbon materials.'
-  },
-  {
-    id: 2,
-    name: 'Michael Rodriguez',
-    role: 'Chief Engineer',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300',
-    description:
-      'Specialises in advanced finite-element seismic analysis.'
-  },
-  {
-    id: 3,
-    name: 'Jennifer Lee',
-    role: 'Landscape Architect',
-    image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&h=300',
-    description:
-      'Designs restorative alpine landscapes with native ecology.'
-  }
-];
 
 const journey: Step[] = [
   {
@@ -105,14 +71,13 @@ const journey: Step[] = [
     year: '2017',
     title: 'Smart Parking Deck',
     body: 'Delivered Himachal\'s first 800-car, Zone-IV seismic-safe automated deck featuring automated vehicle guidance, stormwater management, and green roof panels.',
-    img: '/images/parking render6.jpg'
+    img: '/images/parking-render6.jpg'
   },
   {
     id: 6,
     year: '2024',
     title: 'Industry Leader',
-    body:
-      'Honored by IRC, IEI & IIV for multidisciplinary excellence across the Himalayas, including innovative bridge retrofits, temple restorations, and sustainable resort designs.',
+    body: 'Honored by IRC, IEI & IIV for multidisciplinary excellence across the Himalayas, including innovative bridge retrofits, temple restorations, and sustainable resort designs.',
     img: '/images/architecture-2.jpg'
   }
 ];
@@ -205,55 +170,6 @@ export default function TeamMembers() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TEAM GRID SECTION ──────────────────────────────────── */}
-      <section id="team" className="section-padding bg-site-base">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">
-              Key&nbsp;
-              <span className="text-site-accent">Specialists</span>
-            </h2>
-            <p className="text-site-text/70 max-w-2xl mx-auto">
-              A compact core team supported by 18+ consultants & site professionals
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((m) => (
-              <div
-                key={m.id}
-                onMouseEnter={() => setHoverId(m.id)}
-                onMouseLeave={() => setHoverId(null)}
-                className="glassmorphism border border-site-line rounded-lg overflow-hidden
-                           group cursor-pointer shadow-elevated"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={m.image}
-                    alt={m.name}
-                    className="w-full h-full object-cover transition-transform duration-500
-                               group-hover:scale-110"
-                  />
-                  {hoverId === m.id && (
-                    <span className="absolute inset-0 bg-site-accent/25" />
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold">{m.name}</h3>
-                  <p className="text-site-accent font-medium mb-2">{m.role}</p>
-                  <p className="text-sm text-site-text/80 mb-4">{m.description}</p>
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center text-site-accent text-sm hover:underline"
-                  >
-                    View portfolio <ArrowRight className="ml-1 h-3 w-3" />
-                  </a>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
