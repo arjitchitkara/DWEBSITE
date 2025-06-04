@@ -1,0 +1,26 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* existing relaxed rules */
+    "noImplicitAny":        false,
+    "noUnusedParameters":   false,
+    "skipLibCheck":         true,
+    "allowJs":              true,
+    "noUnusedLocals":       false,
+    "strictNullChecks":     false,
+
+    /* ── added ↓── make `import jwtDecode from 'jwt-decode'` legal ── */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

@@ -1,0 +1,212 @@
+/* 1. Import your fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* 2. Tailwind’s layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Base layer: custom properties & global resets */
+@layer base {
+  :root {
+  /* bright, near-white canvas */
+  --site-base        : 0 0% 100%;   /* #FFFFFF */
+  --site-panel       : 0 0% 98%;    /* #FAFAFA – cards / forms */
+  --site-text        : 0 0% 15%;    /* #262626 – less harsh than pure black */
+  --site-line        : 0 0% 86%;    /* #DADADA – subtle borders */
+  
+  /* warm stone accent (buttons / links) */
+  --site-accent      : 40 25% 55%;  /* #CBB892 */
+  --site-accent-dark : 40 25% 45%;  /* #A69774 */
+}
+
+
+  /* Smooth scrolling */
+  html {
+    @apply scroll-smooth;
+    background-color: hsl(var(--site-base));     /* NEW – hard-set bright base */
+    color: hsl(var(--site-text));                /* NEW – fall-back text colour */
+  }
+
+  /* Background, text, font & hide default cursor */
+  body {
+    @apply bg-site-base text-site-text font-body;
+    cursor: none;
+  }
+
+  /* Custom cursor “dot” */
+  .cursor-dot {
+    @apply fixed w-3 h-3 bg-white rounded-full pointer-events-none z-50 transition-transform duration-100 ease-out;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+  }
+
+  /* Custom cursor outline */
+  .cursor-outline {
+    @apply fixed w-8 h-8 border border-white rounded-full pointer-events-none z-40;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+  }
+
+  /* Cursor grow/shrink on hover */
+  button:hover + .cursor-dot,
+  a:hover + .cursor-dot,
+  .cursor-grow:hover + .cursor-dot {
+    @apply bg-opacity-0;
+  }
+  button:hover ~ .cursor-outline,
+  a:hover ~ .cursor-outline,
+  .cursor-grow:hover ~ .cursor-outline {
+    @apply w-16 h-16 bg-white bg-opacity-10;
+  }
+}
+
+/* 4. Components layer: your custom classes */
+@layer components {}
+  .overlay-pass-through {
+    pointer-events: none;
+  }
+  .container-custom {
+    @apply container mx-auto px-4 md:px-8 lg:px-16;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .heading-xl {
+    @apply font-display font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight;
+  }
+
+  .heading-lg {
+    @apply font-display font-bold text-2xl md:text-3xl lg:text-4xl tracking-tight;
+  }
+
+  .heading-md {
+    @apply font-display font-semibold text-xl md:text-2xl lg:text-3xl tracking-tight;
+  }
+
+  .heading-sm {
+    @apply font-display font-semibold text-lg md:text-xl lg:text-2xl tracking-tight;
+  }
+
+  .text-body {
+    @apply text-base font-normal leading-relaxed;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-sm font-medium transition-colors duration-300;
+    @apply hover:text-white;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply bg-site-accent hover:bg-site-accent-dark
+           text-site-base font-semibold
+           px-8 py-3 rounded-md
+           shadow-md transition-shadow duration-200;
+  }
+  .btn-primary:hover {
+    @apply shadow-lg;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border border-white text-white font-medium rounded-md transition-all duration-300;
+    @apply hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50;
+  }
+  
+  .heading-xl {
+    @apply font-sans font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight;
+  }
+
+  .glassmorphism {
+    @apply backdrop-blur-lg bg-site-base/70 text-site-text  border-white/10;
+  }
+
+  .animated-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .animated-text::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 0;
+    background-color: theme('colors.construction.dark');
+    border-left: 2px solid theme('colors.construction.light');
+    animation: text-reveal 2s ease forwards;
+  }
+
+  /* ---------- NEW UTILITIES ---------- */
+@layer utilities {
+  
+  /* smooth Ken-Burns zoom for service card backgrounds */
+  @keyframes ken-burns {
+    from { transform: scale(1)   translateY(0); }
+    to   { transform: scale(1.1) translateY(-2%); }
+  }
+   {
+  /* criss-cross gold lines */
+  .bg-gold-lines {
+    background-image:
+      repeating-linear-gradient(135deg, transparent 0 46px, hsla(30,30%,50%,.12) 46px 48px),
+      repeating-linear-gradient(45deg , transparent 0 46px, hsla(30,30%,50%,.12) 46px 48px);
+  }
+  .animate-ken-burns {
+    animation: ken-burns 18s ease-in-out infinite alternate;
+  }
+}
+
+  /* sticky-nav shadow / blur once user scrolls 30 px (JS toggles .nav-scrolled) */
+  .nav-scrolled {
+    @apply backdrop-blur-md bg-site-base/70 shadow-elevated;
+  }
+
+  /* shimmer CTA */
+  .shiny::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    @apply rounded-md;
+    background-image: theme('backgroundImage.shine');
+    background-size: 200% 100%;
+    animation: shine 2.8s linear infinite;
+    opacity: .8;
+  }
+
+  /* subtle noise overlay (untouched) */
+  .noise-bg {
+    @apply fixed inset-0 opacity-5 pointer-events-none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    background-size: 200px;
+    z-index: 1;
+  }
+}
+
+/* 5. Glitter overlay on top */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('/images/glitter.png');
+  opacity: 0.1;
+  mix-blend-mode: screen;
+  z-index: 50;
+}
+
+/* ---------- NEW KEYFRAME ---------- */
+@keyframes shine {
+  0%   { background-position: 0%   0; }
+  100% { background-position: 200% 0; }
+}
