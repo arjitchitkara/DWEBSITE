@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
+import { s } from 'node_modules/framer-motion/dist/types.d-CtuPurYT';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 1)  TYPE DEFINITIONS
@@ -20,7 +21,7 @@ const owner = {
   img: '/images/atul-chitkara.png',
   headingA: 'Er. Atul Chitkara',
   headingB: 'Chitkara Constructions',
-  blurb: `Since 1994 we’ve delivered *200+ hill-terrain projects*—from boutique
+  blurb: `Since 1994 we've delivered *200+ hill-terrain projects*—from boutique
 resorts to smart decks. ISO-9001 certified designers & Income-Tax-approved valuers
 committed to contextual sensitivity, structural rigour and lasting sustainability.`,
   stats: [
@@ -67,7 +68,7 @@ const journey: Step[] = [
     title: 'Foundation',
     body:
       'Er. Atul Chitkara assembles architects, engineers & valuers to launch the practice.',
-    img: '/images/foundation.jpg'
+    img: '/images/architecture.jpg'
   },
   {
     id: 2,
@@ -75,7 +76,7 @@ const journey: Step[] = [
     title: 'First Boutique Resort',
     body:
       'Created a 5-star hillside retreat on Mall Road, fusing Himalayan vernacular with modern luxury.',
-    img: '/images/resort.jpg'
+    img: '/images/shimlaheavens.jpg'
   },
   {
     id: 3,
@@ -83,7 +84,7 @@ const journey: Step[] = [
     title: 'ISO-9001 Certification',
     body:
       'Quality-assurance systems formalized for design & project management.',
-    img: '/images/iso.jpg'
+    img: '/images/engineering.jpg'
   },
   {
     id: 4,
@@ -94,7 +95,7 @@ const journey: Step[] = [
     images: [
       '/images/shimla-1.jpg',
       '/images/shimla-2.jpg',
-      '/images/arch.jpg',
+      '/images/architecture-1.jpg',
       '/images/structure.jpg',
       '/images/interior.jpg'
     ]
@@ -103,9 +104,8 @@ const journey: Step[] = [
     id: 5,
     year: '2017',
     title: 'Smart Parking Deck',
-    body:
-      'Delivered Himachal’s first 800-car, Zone-IV seismic-safe automated deck featuring automated vehicle guidance, stormwater management, and green roof panels.',
-    img: '/images/parking.jpg'
+    body: 'Delivered Himachal\'s first 800-car, Zone-IV seismic-safe automated deck featuring automated vehicle guidance, stormwater management, and green roof panels.',
+    img: '/images/parking render6.jpg'
   },
   {
     id: 6,
@@ -113,7 +113,7 @@ const journey: Step[] = [
     title: 'Industry Leader',
     body:
       'Honored by IRC, IEI & IIV for multidisciplinary excellence across the Himalayas, including innovative bridge retrofits, temple restorations, and sustainable resort designs.',
-    img: '/images/awards.jpg'
+    img: '/images/architecture-2.jpg'
   }
 ];
 
@@ -258,7 +258,7 @@ export default function TeamMembers() {
         </div>
       </section>
 
-      {/* ─── “OUR JOURNEY” SECTION with FADE + ZOOM SLIDESHOW ───── */}
+      {/* ─── "OUR JOURNEY" SECTION with FADE + ZOOM SLIDESHOW ───── */}
       <section id="journey" className="relative overflow-hidden">
         {/* 1) Slideshow container (absolute position, no fixed height) */}
         <div className="absolute inset-0 z-0">
