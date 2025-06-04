@@ -17,11 +17,11 @@ const owner = {
   img: '/images/atul-chitkara.png',
   headingA: 'Er. Atul Chitkara',
   headingB: 'Chitkara Constructions',
-  blurb: `Since 1994 we've delivered *200+ hill-terrain projects*—from boutique
+  blurb: `Since 1994 we've delivered *350+ hill-terrain projects*—from boutique
 resorts to smart decks. ISO-9001 certified designers & Income-Tax-approved valuers
 committed to contextual sensitivity, structural rigour and lasting sustainability.`,
   stats: [
-    { label: 'Projects',     value: '200+' },
+    { label: 'Projects',     value: '350+' },
     { label: 'Years',        value: '30+'  },
     { label: 'Satisfaction', value: '5★'  }
   ]
