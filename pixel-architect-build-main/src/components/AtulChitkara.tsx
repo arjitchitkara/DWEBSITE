@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const owner = {
   img: '/images/atul-chitkara.png',
-  headingA: 'Er. Atul Chitkara',
+  headingA: 'Atul Chitkara',
   headingB: 'Chitkara Constructions',
   blurb: `Since 1994 we've delivered *350+ hill-terrain projects*—from boutique
 resorts to smart decks. ISO-9001 certified designers & Income-Tax-approved valuers

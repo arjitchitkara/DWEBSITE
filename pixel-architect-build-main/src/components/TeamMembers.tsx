@@ -19,7 +19,7 @@ const journey: Step[] = [
     year: '1994',
     title: 'Foundation',
     body:
-      'Er. Atul Chitkara assembles architects, engineers & valuers to launch the practice.',
+      'Atul Chitkara assembles architects, engineers & valuers to launch the practice.',
     img: '/images/architecture.jpg'
   },
   {

@@ -75,6 +75,7 @@ export default function Hero() {
               variant="outline"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: .95 }}
+              className="text-white border-white hover:bg-white/10"
             >
               Our Services
             </MotionButton>
