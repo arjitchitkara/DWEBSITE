@@ -20,7 +20,7 @@ export default function Hero() {
   useEffect(() => {
     const id = setInterval(() => setCurrent(i => (i + 1) % headlines.length), 3500);
     return () => clearInterval(id);
-  }, []);
+  }, [headlines.length]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

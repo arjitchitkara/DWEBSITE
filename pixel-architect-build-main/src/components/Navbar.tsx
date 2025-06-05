@@ -43,7 +43,6 @@ export default function Navbar() {
       className={clsx(
         'fixed inset-x-0 z-50 transition-all duration-300',
         scrolled
-          /* theme-update */
           ? 'py-2 backdrop-blur-md bg-site-base/70 shadow-elevated border-b border-site-line/40'
           : 'py-3'
       )}
@@ -53,7 +52,10 @@ export default function Navbar() {
         <Logo to="/" className="h-16 md:h-20 mix-blend-difference" />
 
         {/* ─────────────── desktop links ─────────────── */}
-        <ul className="hidden md:flex space-x-10 /* theme-update */ text-white">
+        <ul className={clsx(
+          "hidden md:flex space-x-10",
+          scrolled ? "text-site-text" : "text-white"
+        )}>
           {links.map(l => (
             <li key={l.name}>
               {l.name === 'Contact' ? (
@@ -86,8 +88,10 @@ export default function Navbar() {
         {/* ─────────────── hamburger ─────────────── */}
         <button
           onClick={() => setOpen(!open)}
-          /* theme-update */
-          className="md:hidden text-white p-2"
+          className={clsx(
+            "md:hidden p-2",
+            scrolled ? "text-site-text" : "text-white"
+          )}
           aria-label="Toggle navigation"
         >
           {open ? <X /> : <Menu />}
@@ -96,7 +100,6 @@ export default function Navbar() {
 
       {/* ─────────────── mobile menu ─────────────── */}
       {open && (
-        /* theme-update */
         <div className="md:hidden bg-site-base/95 backdrop-blur-md">
           <ul className="flex flex-col items-center py-6 space-y-4">
             {links.map(l => (
@@ -105,8 +108,7 @@ export default function Navbar() {
                   <a
                     href={l.path}
                     onClick={(e) => handleSectionClick(e, l.path, 'contact')}
-                    /* theme-update */
-                    className="text-white text-lg hover:text-site-accent cursor-pointer"
+                    className="text-site-text text-lg hover:text-site-accent cursor-pointer"
                   >
                     {l.name}
                   </a>
@@ -114,8 +116,7 @@ export default function Navbar() {
                   <Link
                     to={l.path}
                     onClick={(e) => handleSectionClick(e, l.path, l.id)}
-                    /* theme-update */
-                    className="text-white text-lg hover:text-site-accent"
+                    className="text-site-text text-lg hover:text-site-accent"
                   >
                     {l.name}
                   </Link>

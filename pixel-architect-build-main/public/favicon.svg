@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with blueprint grid -->
+  <rect width="32" height="32" rx="6" fill="#1A1A1A"/>
+  <path d="M0 8H32M0 16H32M0 24H32M8 0V32M16 0V32M24 0V32" stroke="#2A2A2A" stroke-width="0.5"/>
+  
+  <!-- Building structure -->
+  <path d="M8 24V12L16 8L24 12V24" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Architectural details -->
+  <path d="M8 24H24" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M12 24V16" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M20 24V16" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Support beams -->
+  <path d="M12 16H20" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M14 12H18" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Architectural scale -->
+  <path d="M4 4L8 4" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M4 6L6 6" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M4 8L7 8" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Engineering measurements -->
+  <path d="M24 4L28 4" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M26 4L26 8" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+</svg> 
