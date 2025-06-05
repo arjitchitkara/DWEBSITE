@@ -53,7 +53,7 @@ export default function Navbar() {
         <Logo to="/" className="h-16 md:h-20 mix-blend-difference" />
 
         {/* ─────────────── desktop links ─────────────── */}
-        <ul className="hidden md:flex space-x-10 /* theme-update */ text-site-text">
+        <ul className="hidden md:flex space-x-10 /* theme-update */ text-white">
           {links.map(l => (
             <li key={l.name}>
               {l.name === 'Contact' ? (
@@ -87,7 +87,7 @@ export default function Navbar() {
         <button
           onClick={() => setOpen(!open)}
           /* theme-update */
-          className="md:hidden text-site-text p-2"
+          className="md:hidden text-white p-2"
           aria-label="Toggle navigation"
         >
           {open ? <X /> : <Menu />}
@@ -106,7 +106,7 @@ export default function Navbar() {
                     href={l.path}
                     onClick={(e) => handleSectionClick(e, l.path, 'contact')}
                     /* theme-update */
-                    className="text-site-text text-lg hover:text-site-accent cursor-pointer"
+                    className="text-white text-lg hover:text-site-accent cursor-pointer"
                   >
                     {l.name}
                   </a>
@@ -115,7 +115,7 @@ export default function Navbar() {
                     to={l.path}
                     onClick={(e) => handleSectionClick(e, l.path, l.id)}
                     /* theme-update */
-                    className="text-site-text text-lg hover:text-site-accent"
+                    className="text-white text-lg hover:text-site-accent"
                   >
                     {l.name}
                   </Link>
