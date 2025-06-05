@@ -11,22 +11,8 @@ type Step =
   | { id: number; year: string; title: string; body: string; images: string[] };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2)  DATA (HERO, JOURNEY)
+// 2)  DATA (JOURNEY)
 // ─────────────────────────────────────────────────────────────────────────────
-const owner = {
-  img: '/images/atul-chitkara.png',
-  headingA: 'Er. Atul Chitkara',
-  headingB: 'Chitkara Constructions',
-  blurb: `Since 1994 we've delivered *350+ hill-terrain projects*—from boutique
-resorts to smart decks. ISO-9001 certified designers & Income-Tax-approved valuers
-committed to contextual sensitivity, structural rigour and lasting sustainability.`,
-  stats: [
-    { label: 'Projects',     value: '350+' },
-    { label: 'Years',        value: '30+'  },
-    { label: 'Satisfaction', value: '5★'  }
-  ]
-};
-
 const journey: Step[] = [
   {
     id: 1,
@@ -140,48 +126,14 @@ export default function TeamMembers() {
       `}
       </style>
 
-      {/* ─── HERO SECTION ───────────────────────────────────────── */}
-      <section className="section-padding bg-site-base">
-        <div className="container-custom flex flex-col lg:flex-row gap-10 items-center">
-          <img
-            src={owner.img}
-            alt={owner.headingA}
-            className="w-full max-w-sm rounded-xl shadow-elevated object-cover"
-          />
-          <div className="flex-1 space-y-6">
-            <h2 className="heading-xl">
-              {owner.headingA}
-              <br />
-              <span className="text-site-accent">{owner.headingB}</span>
-            </h2>
-            <p className="text-body max-w-2xl">
-              {owner.blurb.split('\n').map((line, idx) => (
-                <span key={idx}>
-                  {line.replace(/\*/g, '')}
-                  <br />
-                </span>
-              ))}
-            </p>
-            <div className="flex gap-12 pt-2">
-              {owner.stats.map((s) => (
-                <div key={s.label}>
-                  <p className="text-site-accent font-bold text-2xl">{s.value}</p>
-                  <p className="text-xs tracking-wide uppercase">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── "OUR JOURNEY" SECTION with FADE + ZOOM SLIDESHOW ───── */}
       <section id="journey" className="relative overflow-hidden">
         {/* 1) Slideshow container (absolute position, no fixed height) */}
         <div className="absolute inset-0 z-0">
-          <img src="/images/view2.jpg"         className="fade-zoom" alt="Slide 1" />
-          <img src="/images/view8.jpg"         className="fade-zoom" alt="Slide 2" />
-          <img src="/images/view7.jpg"         className="fade-zoom" alt="Slide 3" />
-          <img src="/images/parking render6.jpg" className="fade-zoom" alt="Slide 4" />
+          <img src="/images/view2.jpg" className="fade-zoom" alt="Slide 1" />
+          <img src="/images/view8.jpg" className="fade-zoom" alt="Slide 2" />
+          <img src="/images/view7.jpg" className="fade-zoom" alt="Slide 3" />
+          <img src="/images/parking-render6.jpg" className="fade-zoom" alt="Slide 4" />
           {/* Additional semi-transparent overlay to deepen darkness */}
           <div className="absolute inset-0 bg-black/30" />
         </div>

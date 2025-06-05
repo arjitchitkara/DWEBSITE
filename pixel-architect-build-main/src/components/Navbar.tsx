@@ -7,10 +7,9 @@ import Logo from './Logo';
 
 const links = [
   { name: 'Home',     path: '/' },
-  { name: 'About',    path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Team',     path: '/team' },
+  { name: 'About',    path: '/about', id: 'about' },
+  { name: 'Services', path: '/services', id: 'services' },
+  { name: 'Projects', path: '/projects', id: 'projects' },
   { name: 'Contact',  path: '#contact' },
 ];
 
@@ -27,12 +26,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-      setOpen(false);
+  const handleSectionClick = (e: React.MouseEvent, path: string, id?: string) => {
+    // If we're on the home page and it's a section link, scroll to it
+    if (pathname === '/' && id) {
+      e.preventDefault();
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        setOpen(false);
+      }
     }
   };
 
@@ -57,7 +59,7 @@ export default function Navbar() {
               {l.name === 'Contact' ? (
                 <a
                   href={l.path}
-                  onClick={handleContactClick}
+                  onClick={(e) => handleSectionClick(e, l.path, 'contact')}
                   className={clsx(
                     'hover:text-site-accent transition-colors cursor-pointer',
                     pathname === l.path && 'text-site-accent font-semibold'
@@ -68,6 +70,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={l.path}
+                  onClick={(e) => handleSectionClick(e, l.path, l.id)}
                   className={clsx(
                     'hover:text-site-accent transition-colors',
                     pathname === l.path && 'text-site-accent font-semibold'
@@ -101,7 +104,7 @@ export default function Navbar() {
                 {l.name === 'Contact' ? (
                   <a
                     href={l.path}
-                    onClick={handleContactClick}
+                    onClick={(e) => handleSectionClick(e, l.path, 'contact')}
                     /* theme-update */
                     className="text-site-text text-lg hover:text-site-accent cursor-pointer"
                   >
@@ -110,9 +113,9 @@ export default function Navbar() {
                 ) : (
                   <Link
                     to={l.path}
+                    onClick={(e) => handleSectionClick(e, l.path, l.id)}
                     /* theme-update */
                     className="text-site-text text-lg hover:text-site-accent"
-                    onClick={() => setOpen(false)}
                   >
                     {l.name}
                   </Link>

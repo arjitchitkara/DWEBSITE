@@ -1,4 +1,3 @@
-import { useEffect } from "react";           // NEW
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,19 +15,6 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  /* ---------- NEW SCROLL LISTENER ---------- */
-  useEffect(() => {
-    const nav = document.getElementById("site-nav");
-    if (!nav) return;                        // fail-safe if nav not mounted
-    const onScroll = () =>
-      window.scrollY > 30
-        ? nav.classList.add("nav-scrolled")
-        : nav.classList.remove("nav-scrolled");
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  /* ----------------------------------------- */
-
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -43,7 +29,6 @@ const App = () => {
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/quote" element={<QuotePage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </TooltipProvider>
