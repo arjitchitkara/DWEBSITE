@@ -64,14 +64,14 @@ export default function Contact() {
   /* ---------- UI ---------- */
   /* theme-update: entire section now uses site palette */
   return (
-    <section id="contact" className="section-padding bg-site-panel">
+    <section id="contact" className="section-padding bg-white">
       <div className="container-custom">
         {/* header */}
         <div className="text-center mb-16">
           <h2 className="heading-lg mb-4">
             Get in <span className="text-site-accent">Touch</span>
           </h2>
-          <p className="text-site-text/70 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Contact us to discuss your project or to learn more about our services
           </p>
         </div>
@@ -82,9 +82,9 @@ export default function Contact() {
             <form
               ref={formRef}
               onSubmit={handleSubmit}
-              className="bg-site-base p-8 rounded-lg border border-site-line shadow-elevated"
+              className="bg-white p-8 rounded-lg border border-gray-200 shadow-lg"
             >
-              <h3 className="heading-md mb-6">Send us a message</h3>
+              <h3 className="heading-md mb-6 text-gray-900">Send us a message</h3>
 
               {/* name / email */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -159,8 +159,8 @@ export default function Contact() {
 
           {/* --------------------- contact card --------------------- */}
           <div>
-            <div className="bg-site-base p-8 rounded-lg border border-site-line shadow-elevated h-full space-y-8">
-              <h3 className="heading-md">Contact Information</h3>
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-lg h-full space-y-8">
+              <h3 className="heading-md text-gray-900">Contact Information</h3>
 
               <ContactRow
                 icon={<Phone className="h-5 w-5" />}
@@ -177,7 +177,7 @@ export default function Contact() {
                 title="Office" value="1, Commercial Building…\nShimla 171001"
               />
 
-              <div className="pt-6 border-t border-site-line space-y-4">
+              <div className="pt-6 border-t border-gray-200 space-y-4">
                 <Button asChild variant="outline"
                   className="w-full flex justify-center">
                   <a href={`tel:${WHATSAPP_NUMBER}`}>
@@ -212,14 +212,14 @@ function ContactRow({
         {icon}
       </div>
       <div>
-        <p className="text-sm text-site-text/70 mb-1">{title}</p>
+        <p className="text-sm text-gray-500 mb-1">{title}</p>
         {href ? (
           <a href={href}
-             className="text-site-text hover:text-site-accent break-all whitespace-pre-line">
+             className="text-gray-900 hover:text-site-accent break-all whitespace-pre-line">
             {value}
           </a>
         ) : (
-          <p className="text-site-text whitespace-pre-line">{value}</p>
+          <p className="text-gray-900 whitespace-pre-line">{value}</p>
         )}
       </div>
     </div>
@@ -230,11 +230,11 @@ function ContactRow({
 /*
 @layer components {
   .form-label {
-    @apply block text-sm font-medium text-site-text/70 mb-2;
+    @apply block text-sm font-medium text-gray-700 mb-2;
   }
   .form-input {
-    @apply w-full p-3 bg-site-panel border border-site-line rounded-md
-           focus:outline-none focus:border-site-accent text-site-text;
+    @apply w-full p-3 bg-gray-50 border border-gray-200 rounded-md
+           focus:outline-none focus:border-site-accent text-gray-900;
   }
 }
 */

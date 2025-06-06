@@ -30,7 +30,7 @@
   /* Background, text, font & hide default cursor */
   body {
     @apply bg-site-base text-site-text font-body;
-    cursor: none;
+    /* cursor: none; */ /* Temporarily disabled */
   }
 
   /* Custom cursor "dot" */

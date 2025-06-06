@@ -12,9 +12,6 @@ const config: Config = {
   /* Tell Tailwind where to scan for class-names */
   content: [
     './index.html',
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
 

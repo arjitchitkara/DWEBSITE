@@ -34,17 +34,17 @@ export default function Contact() {
   /* shorthand for every input style */
   const baseInput =
     'w-full p-3 bg-white border border-construction-accent rounded-md ' +
-    'text-black placeholder-gray-500 ' +
+    'text-black placeholder-gray-700 ' +
     'focus:outline-none focus:ring-2 focus:ring-construction-accent ' +
     'transition-colors';
 
   return (
-    <section id="contact" className="section-padding bg-white">
+    <section id="contact" className="section-padding bg-gray-100">
       <div className="container-custom">
 
         {/* heading ----------------------------------------------------- */}
         <header className="text-center mb-16">
-          <h2 className="heading-lg mb-2 text-black leading-tight">
+          <h2 className="heading-lg mb-2 text-gray-700 leading-tight">
             Get&nbsp;in&nbsp;
             {/* now definitely visible & gold */}
             <span className="inline-block text-[#C8A24D]">Touch</span>
@@ -53,12 +53,12 @@ export default function Contact() {
           {/* thin accent bar under heading for a little flair */}
           <div className="h-1 w-14 bg-construction-accent mx-auto mb-5 rounded-full"/>
 
-          <p className="max-w-2xl mx-auto text-gray-700">
+          <p className="max-w-2xl mx-auto text-gray-900">
             Contact us to discuss your project or to learn more about our services.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 text-gray-900 opacity-100">
           {/* ------------------------- FORM --------------------------- */}
           <div className="lg:col-span-2">
             <form
@@ -123,7 +123,7 @@ export default function Contact() {
           </div>
 
           {/* --------------- CONTACT INFORMATION ---------------------- */}
-          <aside className="bg-white p-8 rounded-lg border border-construction-accent shadow-sm transition-shadow hover:shadow-md h-full">
+          <aside className="bg-white p-8 rounded-lg border border-construction-accent shadow-sm transition-shadow hover:shadow-md h-full text-black">
             <h3 className="heading-md mb-6 text-black">Contact Information</h3>
 
             <InfoItem icon={Phone} label="Phone Number">

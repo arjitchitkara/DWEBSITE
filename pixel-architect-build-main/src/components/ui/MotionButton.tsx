@@ -3,14 +3,13 @@ import { Button, type ButtonProps } from '@/components/ui/button';
 import { motion, type HTMLMotionProps } from 'framer-motion';
 import { forwardRef } from 'react';
 
-type MotionButtonProps = ButtonProps & HTMLMotionProps<'button'>;
+type MotionButtonProps = ButtonProps & Omit<HTMLMotionProps<'div'>, 'as'>;
 
-const MotionButton = forwardRef<HTMLButtonElement, MotionButtonProps>(
+const MotionButton = forwardRef<HTMLDivElement, MotionButtonProps>(
   ({ children, ...rest }, ref) => (
-    <motion.button ref={ref} {...rest}>
-      {/* pass only Button props down to Button */ }
+    <motion.div ref={ref} {...rest}>
       <Button {...(rest as ButtonProps)}>{children}</Button>
-    </motion.button>
+    </motion.div>
   )
 );
 MotionButton.displayName = 'MotionButton';

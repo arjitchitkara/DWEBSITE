@@ -7,11 +7,10 @@ import Logo from './Logo';
 
 const links = [
   { name: 'Home',     path: '/' },
-  { name: 'About',    path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Team',     path: '/team' },
-  { name: 'Contact',  path: '/contact' },
+  { name: 'About',    path: '/about', id: 'about' },
+  { name: 'Services', path: '/services', id: 'services' },
+  { name: 'Projects', path: '/projects', id: 'projects' },
+  { name: 'Contact',  path: '#contact' },
 ];
 
 export default function Navbar() {
@@ -27,35 +26,61 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const handleSectionClick = (e: React.MouseEvent, path: string, id?: string) => {
+    // If we're on the home page and it's a section link, scroll to it
+    if (pathname === '/' && id) {
+      e.preventDefault();
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        setOpen(false);
+      }
+    }
+  };
+
   return (
     <header
       className={clsx(
         'fixed inset-x-0 z-50 transition-all duration-300',
         scrolled
-          /* theme-update */
           ? 'py-2 backdrop-blur-md bg-site-base/70 shadow-elevated border-b border-site-line/40'
           : 'py-3'
       )}
     >
       <nav className="container-custom flex items-center justify-between">
         {/* ─────────────────── logo ─────────────────── */}
-        <Link to="/" className="flex items-center">
-          <Logo className="h-16 md:h-20 mix-blend-difference" />
-        </Link>
+        <Logo to="/" className="h-16 md:h-20 mix-blend-difference" />
 
         {/* ─────────────── desktop links ─────────────── */}
-        <ul className="hidden md:flex space-x-10 /* theme-update */ text-site-text">
+        <ul className={clsx(
+          "hidden md:flex space-x-10",
+          scrolled ? "text-site-text" : "text-white"
+        )}>
           {links.map(l => (
             <li key={l.name}>
-              <Link
-                to={l.path}
-                className={clsx(
-                  'hover:text-site-accent transition-colors',
-                  pathname === l.path && 'text-site-accent font-semibold'
-                )}
-              >
-                {l.name}
-              </Link>
+              {l.name === 'Contact' ? (
+                <a
+                  href={l.path}
+                  onClick={(e) => handleSectionClick(e, l.path, 'contact')}
+                  className={clsx(
+                    'hover:text-site-accent transition-colors cursor-pointer',
+                    pathname === l.path && 'text-site-accent font-semibold'
+                  )}
+                >
+                  {l.name}
+                </a>
+              ) : (
+                <Link
+                  to={l.path}
+                  onClick={(e) => handleSectionClick(e, l.path, l.id)}
+                  className={clsx(
+                    'hover:text-site-accent transition-colors',
+                    pathname === l.path && 'text-site-accent font-semibold'
+                  )}
+                >
+                  {l.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -63,8 +88,10 @@ export default function Navbar() {
         {/* ─────────────── hamburger ─────────────── */}
         <button
           onClick={() => setOpen(!open)}
-          /* theme-update */
-          className="md:hidden text-site-text p-2"
+          className={clsx(
+            "md:hidden p-2",
+            scrolled ? "text-site-text" : "text-white"
+          )}
           aria-label="Toggle navigation"
         >
           {open ? <X /> : <Menu />}
@@ -73,19 +100,27 @@ export default function Navbar() {
 
       {/* ─────────────── mobile menu ─────────────── */}
       {open && (
-        /* theme-update */
         <div className="md:hidden bg-site-base/95 backdrop-blur-md">
           <ul className="flex flex-col items-center py-6 space-y-4">
             {links.map(l => (
               <li key={l.name}>
-                <Link
-                  to={l.path}
-                  /* theme-update */
-                  className="text-site-text text-lg hover:text-site-accent"
-                  onClick={() => setOpen(false)}
-                >
-                  {l.name}
-                </Link>
+                {l.name === 'Contact' ? (
+                  <a
+                    href={l.path}
+                    onClick={(e) => handleSectionClick(e, l.path, 'contact')}
+                    className="text-site-text text-lg hover:text-site-accent cursor-pointer"
+                  >
+                    {l.name}
+                  </a>
+                ) : (
+                  <Link
+                    to={l.path}
+                    onClick={(e) => handleSectionClick(e, l.path, l.id)}
+                    className="text-site-text text-lg hover:text-site-accent"
+                  >
+                    {l.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

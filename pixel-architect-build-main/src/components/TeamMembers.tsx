@@ -1,6 +1,5 @@
 /*  src/components/TeamMembers.tsx  */
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 
@@ -11,63 +10,17 @@ type Step =
   | { id: number; year: string; title: string; body: string; img: string }
   | { id: number; year: string; title: string; body: string; images: string[] };
 
-type TeamMember = { id: number; name: string; role: string; image: string; description: string };
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 2)  DATA (HERO, TEAM, JOURNEY)
+// 2)  DATA (JOURNEY)
 // ─────────────────────────────────────────────────────────────────────────────
-const owner = {
-  img: '/images/atul-chitkara.png',
-  headingA: 'Er. Atul Chitkara',
-  headingB: 'Chitkara Constructions',
-  blurb: `Since 1994 we’ve delivered *200+ hill-terrain projects*—from boutique
-resorts to smart decks. ISO-9001 certified designers & Income-Tax-approved valuers
-committed to contextual sensitivity, structural rigour and lasting sustainability.`,
-  stats: [
-    { label: 'Projects',     value: '200+' },
-    { label: 'Years',        value: '30+'  },
-    { label: 'Satisfaction', value: '5★'  }
-  ]
-};
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: 'Sarah Johnson',
-    role: 'Lead Architect',
-    image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300',
-    description:
-      'Advocates passive-design strategies & low-carbon materials.'
-  },
-  {
-    id: 2,
-    name: 'Michael Rodriguez',
-    role: 'Chief Engineer',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300',
-    description:
-      'Specialises in advanced finite-element seismic analysis.'
-  },
-  {
-    id: 3,
-    name: 'Jennifer Lee',
-    role: 'Landscape Architect',
-    image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&h=300',
-    description:
-      'Designs restorative alpine landscapes with native ecology.'
-  }
-];
-
 const journey: Step[] = [
   {
     id: 1,
     year: '1994',
     title: 'Foundation',
     body:
-      'Er. Atul Chitkara assembles architects, engineers & valuers to launch the practice.',
-    img: '/images/foundation.jpg'
+      'Atul Chitkara assembles architects, engineers & valuers to launch the practice.',
+    img: '/images/architecture.jpg'
   },
   {
     id: 2,
@@ -75,7 +28,7 @@ const journey: Step[] = [
     title: 'First Boutique Resort',
     body:
       'Created a 5-star hillside retreat on Mall Road, fusing Himalayan vernacular with modern luxury.',
-    img: '/images/resort.jpg'
+    img: '/images/shimlaheavens.jpg'
   },
   {
     id: 3,
@@ -83,7 +36,7 @@ const journey: Step[] = [
     title: 'ISO-9001 Certification',
     body:
       'Quality-assurance systems formalized for design & project management.',
-    img: '/images/iso.jpg'
+    img: '/images/engineering.jpg'
   },
   {
     id: 4,
@@ -94,7 +47,7 @@ const journey: Step[] = [
     images: [
       '/images/shimla-1.jpg',
       '/images/shimla-2.jpg',
-      '/images/arch.jpg',
+      '/images/architecture-1.jpg',
       '/images/structure.jpg',
       '/images/interior.jpg'
     ]
@@ -103,17 +56,15 @@ const journey: Step[] = [
     id: 5,
     year: '2017',
     title: 'Smart Parking Deck',
-    body:
-      'Delivered Himachal’s first 800-car, Zone-IV seismic-safe automated deck featuring automated vehicle guidance, stormwater management, and green roof panels.',
-    img: '/images/parking.jpg'
+    body: 'Delivered Himachal\'s first 800-car, Zone-IV seismic-safe automated deck featuring automated vehicle guidance, stormwater management, and green roof panels.',
+    img: '/images/parking-render6.jpg'
   },
   {
     id: 6,
     year: '2024',
     title: 'Industry Leader',
-    body:
-      'Honored by IRC, IEI & IIV for multidisciplinary excellence across the Himalayas, including innovative bridge retrofits, temple restorations, and sustainable resort designs.',
-    img: '/images/awards.jpg'
+    body: 'Honored by IRC, IEI & IIV for multidisciplinary excellence across the Himalayas, including innovative bridge retrofits, temple restorations, and sustainable resort designs.',
+    img: '/images/architecture-2.jpg'
   }
 ];
 
@@ -175,97 +126,14 @@ export default function TeamMembers() {
       `}
       </style>
 
-      {/* ─── HERO SECTION ───────────────────────────────────────── */}
-      <section className="section-padding bg-site-base">
-        <div className="container-custom flex flex-col lg:flex-row gap-10 items-center">
-          <img
-            src={owner.img}
-            alt={owner.headingA}
-            className="w-full max-w-sm rounded-xl shadow-elevated object-cover"
-          />
-          <div className="flex-1 space-y-6">
-            <h2 className="heading-xl">
-              {owner.headingA}
-              <br />
-              <span className="text-site-accent">{owner.headingB}</span>
-            </h2>
-            <p className="text-body max-w-2xl">
-              {owner.blurb.split('\n').map((line, idx) => (
-                <span key={idx}>
-                  {line.replace(/\*/g, '')}
-                  <br />
-                </span>
-              ))}
-            </p>
-            <div className="flex gap-12 pt-2">
-              {owner.stats.map((s) => (
-                <div key={s.label}>
-                  <p className="text-site-accent font-bold text-2xl">{s.value}</p>
-                  <p className="text-xs tracking-wide uppercase">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TEAM GRID SECTION ──────────────────────────────────── */}
-      <section id="team" className="section-padding bg-site-base">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">
-              Key&nbsp;
-              <span className="text-site-accent">Specialists</span>
-            </h2>
-            <p className="text-site-text/70 max-w-2xl mx-auto">
-              A compact core team supported by 18+ consultants & site professionals
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((m) => (
-              <div
-                key={m.id}
-                onMouseEnter={() => setHoverId(m.id)}
-                onMouseLeave={() => setHoverId(null)}
-                className="glassmorphism border border-site-line rounded-lg overflow-hidden
-                           group cursor-pointer shadow-elevated"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={m.image}
-                    alt={m.name}
-                    className="w-full h-full object-cover transition-transform duration-500
-                               group-hover:scale-110"
-                  />
-                  {hoverId === m.id && (
-                    <span className="absolute inset-0 bg-site-accent/25" />
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold">{m.name}</h3>
-                  <p className="text-site-accent font-medium mb-2">{m.role}</p>
-                  <p className="text-sm text-site-text/80 mb-4">{m.description}</p>
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center text-site-accent text-sm hover:underline"
-                  >
-                    View portfolio <ArrowRight className="ml-1 h-3 w-3" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── “OUR JOURNEY” SECTION with FADE + ZOOM SLIDESHOW ───── */}
+      {/* ─── "OUR JOURNEY" SECTION with FADE + ZOOM SLIDESHOW ───── */}
       <section id="journey" className="relative overflow-hidden">
         {/* 1) Slideshow container (absolute position, no fixed height) */}
         <div className="absolute inset-0 z-0">
-          <img src="/images/view2.jpg"         className="fade-zoom" alt="Slide 1" />
-          <img src="/images/view8.jpg"         className="fade-zoom" alt="Slide 2" />
-          <img src="/images/view7.jpg"         className="fade-zoom" alt="Slide 3" />
-          <img src="/images/parking render6.jpg" className="fade-zoom" alt="Slide 4" />
+          <img src="/images/view2.jpg" className="fade-zoom" alt="Slide 1" />
+          <img src="/images/view8.jpg" className="fade-zoom" alt="Slide 2" />
+          <img src="/images/view7.jpg" className="fade-zoom" alt="Slide 3" />
+          <img src="/images/parking-render6.jpg" className="fade-zoom" alt="Slide 4" />
           {/* Additional semi-transparent overlay to deepen darkness */}
           <div className="absolute inset-0 bg-black/30" />
         </div>

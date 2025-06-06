@@ -20,7 +20,7 @@ export default function Hero() {
   useEffect(() => {
     const id = setInterval(() => setCurrent(i => (i + 1) % headlines.length), 3500);
     return () => clearInterval(id);
-  }, []);
+  }, [headlines.length]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -64,21 +64,22 @@ export default function Hero() {
           animate={{ opacity: 1, transition: { delay: .75 } }}
           className="flex flex-wrap justify-center gap-4"
         >
-          <Link to="/projects">
+          <a href="#projects">
             <MotionButton whileHover={{ scale: 1.05 }} whileTap={{ scale: .95 }} className="btn-primary">
               Explore Our Projects <ArrowRight className="ml-2 h-4 w-4" />
             </MotionButton>
-          </Link>
+          </a>
 
-          <Link to="/services">
+          <a href="#services">
             <MotionButton
               variant="outline"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: .95 }}
+              className="text-white border-white hover:bg-white/10"
             >
               Our Services
             </MotionButton>
-          </Link>
+          </a>
         </motion.div>
 
         {/* stats */}

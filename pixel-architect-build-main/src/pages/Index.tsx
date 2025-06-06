@@ -1,8 +1,9 @@
-
 import { useEffect } from 'react';
 import CustomCursor from '../components/CustomCursor';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import AtulChitkara from '../components/AtulChitkara';
+import About from '../components/About';
 import Services from '../components/Services';
 import Projects from '../components/Projects';
 import TeamMembers from '../components/TeamMembers';
@@ -20,6 +21,8 @@ const Index = () => {
       <CustomCursor />
       <Navbar />
       <Hero />
+      <AtulChitkara />
+      <About />
       <Services />
       <Projects />
       <TeamMembers />
